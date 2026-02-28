@@ -9,7 +9,10 @@ class Gui:
         self.responses = []
         self.root = Tk()
         self.root.config(background="#c071b3")
-        self.root.iconbitmap("icon.ico")
+        try:
+            self.root.iconbitmap("icon.ico")
+        except:
+            print("No ico... Skipping")
         self.root.title("xXSuper_Ai_PlayzXx")
         self.root.geometry("600x600")
 
@@ -39,7 +42,5 @@ class Gui:
         self.responses.append(response)
 
     def submitEntry(self):
-        self.ai.sendMessage(self.entry.get())
-
         self.entry.delete(0, END)
-        self.ai.sendMessage("Whenever you speak pretend to be a gen a tiktok doom scrolling gamer and only address me as chud. You need to add plenty of slang and emojis: " + self.entry.get())
+        self.ai.sendMessage(self.entry.get())
