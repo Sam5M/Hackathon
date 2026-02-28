@@ -40,8 +40,12 @@ class AI:
             if line:
                 # print(line)
                 json_data = json.loads(line)
+                #print(line)
                 print(json_data["message"]["content"], end="", flush=True)
                 self.responses += json_data["message"]["content"]
                 system_response += json_data["message"]["content"]
+                self.gui.responselabel.config(text=system_response)
+                #self.gui.responselabel.text = system_response
+                self.gui.root.update()
         self.chat_mem += f'{question}, {{"role": "system", "content": "{system_response.replace("\n", "\\n")}"}},'
         print("Chat Mem:", self.chat_mem)
