@@ -25,7 +25,10 @@ root.mainloop()
 # # Python 3
 # subprocess.Popen(f"ssh {user}@{host} {cmd}", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
 
-print(subprocess.getoutput(cmd))
+T = Text(Tk(), height=50, width=150)
+
+#print(subprocess.getoutput(cmd))
+T.insert(END, print(subprocess.getoutput(cmd)))
 question = input("Enter question: ")
 response = requests.post(url=f"{host}generate", data=f'{{"model": "gemma3", "prompt": "{question}"}}', stream=True)
 
@@ -35,6 +38,9 @@ response = requests.post(url=f"{host}generate", data=f'{{"model": "gemma3", "pro
 for line in response.iter_lines():
     if line:
         json_data = json.loads(line)
-        print(json_data["response"], end="", flush=True)
+        #print(json_data["response"], end="", flush=True)
+        #aiResponse = (json_data["response"], end="", flush=True)
+        T.insert(END, print(json_data["response"], end="", flush=True))
+        mainloop()
 
 # To chat: curl http://164.152.25.35:11434/api/generate -d '{"model": "gemma3", "prompt": "Why is the sky blue?"}'
