@@ -5,10 +5,10 @@ import threading
 
 class AI:
     def __init__(self, gui):
-        self.gui = gui
-        self.user = ""
         self.host = "http://164.152.25.35:11434/api/"
-        self.cmd = "cd .."
+        self.chat_mem = ""
+        self.responses = ""
+        self.gui = gui
 
         threading.Thread(target=self.run_ai, daemon=True).start()
 
@@ -43,7 +43,5 @@ class AI:
                 print(json_data["message"]["content"], end="", flush=True)
                 self.responses += json_data["message"]["content"]
                 system_response += json_data["message"]["content"]
-                self.gui.responselabel.config(text=system_response)
-                self.gui.root.update()
         self.chat_mem += f'{question}, {{"role": "system", "content": "{system_response.replace("\n", "\\n")}"}},'
         print("Chat Mem:", self.chat_mem)
