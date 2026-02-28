@@ -5,10 +5,10 @@ import threading
 
 class AI:
     def __init__(self, gui):
-        self.host = "http://164.152.25.35:11434/api/"
-        self.chat_mem = ""
-        self.responses = ""
         self.gui = gui
+        self.user = ""
+        self.host = "http://164.152.25.35:11434/api/"
+        self.cmd = "cd .."
 
         threading.Thread(target=self.run_ai, daemon=True).start()
 
