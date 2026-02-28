@@ -1,4 +1,4 @@
-from Gui import Gui
+from gui import Gui
 
 try:
     gui = Gui()
