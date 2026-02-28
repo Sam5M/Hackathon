@@ -42,5 +42,6 @@ class Gui:
         self.responses.append(response)
 
     def submitEntry(self):
+        message = self.entry.get()
         self.entry.delete(0, END)
-        self.ai.sendMessage(self.entry.get())
+        self.ai.sendMessage(message)
