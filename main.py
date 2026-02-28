@@ -1,4 +1,7 @@
 import subprocess
+import tkinter
+from tkinter import *
+from tkinter import ttk
 import requests
 import json
 # Source - https://stackoverflow.com/a/57439663
@@ -9,6 +12,12 @@ import json
 user = ""
 host = "http://164.152.25.35:11434/api/"
 cmd = "cd .."
+root = Tk()
+frm = ttk.Frame(root, padding=10)
+frm.grid()
+ttk.Label(frm, text="Hello World!").grid(column=0, row=0)
+ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=0)
+root.mainloop()
 
 # # Python 2
 # subprocess.Popen("ssh {user}@{host} {cmd}".format(user=user, host=host, cmd='ls -l'), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
