@@ -1,5 +1,6 @@
 import subprocess
 import requests
+import json
 # Source - https://stackoverflow.com/a/57439663
 # Posted by Ronn Macc, modified by community. See post 'Timeline' for change history
 # Retrieved 2026-02-28, License - CC BY-SA 4.0
@@ -23,6 +24,7 @@ response = requests.post(url=f"{host}generate", data='{"model": "gemma3", "promp
 
 for line in response.iter_lines():
     if line:
-        print(line)
+        json_data = json.loads(line)
+        print(json_data["response"], end="")
 
 # To chat: curl http://164.152.25.35:11434/api/generate -d '{"model": "gemma3", "prompt": "Why is the sky blue?"}'
