@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-from AI import AI
+from ai import AI
 
 class Gui:
     def __init__(self):
