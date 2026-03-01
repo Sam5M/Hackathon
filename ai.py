@@ -45,6 +45,7 @@ class AI:
                 self.responses += json_data["message"]["content"]
                 system_response += json_data["message"]["content"]
                 self.gui.responselabel.config(text=system_response)
+                self.gui.responselabel.config(wraplength=self.gui.root.winfo_width())
                 #self.gui.responselabel.text = system_response
                 self.gui.root.update()
         self.chat_mem += f'{question}, {{"role": "system", "content": "{system_response.replace("\n", "\\n")}"}},'

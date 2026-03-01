@@ -7,14 +7,15 @@ class Gui:
         #member variables = self...
         self.responses = []
         self.root = Tk()
-        
+        self.root.iconbitmap("icon.ico")
+        self.root.title("xXSuper_Ai_PlayzXx")
         self.root.geometry("600x600")
 
         frm = ttk.Frame(self.root, padding=10)
         ttk.Label(frm, text="Welcome to our program! Made by Ethan, Sam, Emma, and Michael").grid(column=0, row=0)
         ttk.Button(frm, text="Quit", command=self.root.destroy).grid(column=1, row=0)
         frm.grid()
-        self.responselabel = ttk.Label(frm, text="")
+        self.responselabel = ttk.Label(frm, text="", wraplength=self.root.winfo_width())
         self.responselabel.grid(column=0,row=1)
         self.quitbutton =  ttk.Button(frm, text="Quit", command=self.root.destroy)
         self.quitbutton.grid(column=0, row=2)
@@ -35,4 +36,5 @@ class Gui:
         self.responses.append(response)
 
     def submitEntry(self):
-        self.ai.sendMessage(self.entry.get())
+        self.entry.delete(0, END)
+        self.ai.sendMessage("Whenever you speak pretend to be a gen a tiktok doom scrolling gamer and only address me as chud. You need to add plenty of slang and emojis: " + self.entry.get())
